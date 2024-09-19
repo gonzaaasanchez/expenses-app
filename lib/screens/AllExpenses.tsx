@@ -1,7 +1,18 @@
-import { Text } from 'react-native';
+import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
+import Expense from '../model/Expense';
 
-const AllExpenses: React.FC = () => {
-  return <Text>AllExpenses</Text>;
+interface AllExpensesProps {
+  expenses: Expense[];
+  period: string;
+}
+
+const AllExpenses: React.FC<AllExpensesProps> = ({ expenses, period }) => {
+  return (
+    <ExpensesOutput
+      expenses={expenses}
+      period='Total'
+    />
+  );
 };
 
 export default AllExpenses;
