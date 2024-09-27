@@ -4,16 +4,23 @@ import Expense from '../../model/Expense';
 import { GlobalStyles } from '../../constants/styles';
 import { getFormattedDate } from '../../utils/date';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../App';
+
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'ManageExpense'
+>;
 
 interface ExpenseItemProps {
   expense: Expense;
 }
 
 const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
 
   const expensePressed = () => {
-    navigation.navigate("ManageExpense");
+    navigation.navigate('ManageExpense', { expenseId: expense.id });
   };
 
   return (
