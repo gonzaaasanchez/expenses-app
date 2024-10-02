@@ -1,5 +1,5 @@
 type Expense = {
-  id: string;
+  id?: string;
   description: string;
   date: Date;
   amount: number;

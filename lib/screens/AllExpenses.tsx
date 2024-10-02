@@ -8,11 +8,11 @@ interface AllExpensesProps {
   period: string;
 }
 
-const AllExpenses: React.FC<AllExpensesProps> = ({ expenses, period }) => {
-  const expensesContext = useContext(ExpensesContext);
+const AllExpenses: React.FC<AllExpensesProps> = ({}) => {
+  const { expenses } = useContext(ExpensesContext);
   return (
     <ExpensesOutput
-      expenses={expensesContext.expenses}
+      expenses={expenses}
       period="Total"
     />
   );

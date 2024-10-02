@@ -2,10 +2,11 @@ import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { View, StyleSheet } from 'react-native';
 import { RootStackParamList } from '../../App';
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import IconButton from '../components/UI/IconButton';
 import { GlobalStyles } from '../constants/styles';
 import Button, { ButtonMode } from '../components/UI/Button';
+import { ExpensesContext } from '../store/expenses-context';
 
 type ManageExpensecreenProps = {
   route: RouteProp<RootStackParamList, 'ManageExpense'>;
@@ -16,6 +17,7 @@ const ManageExpense: React.FC<ManageExpensecreenProps> = ({
   route,
   navigation,
 }) => {
+  const expenseContext = useContext(ExpensesContext);
   const editedExpenseId = route.params?.expenseId;
   const isEditing = !!editedExpenseId;
 
@@ -26,6 +28,20 @@ const ManageExpense: React.FC<ManageExpensecreenProps> = ({
   }, [navigation, isEditing]);
 
   function confirmHandler() {
+    if (isEditing) {
+      expenseContext.updateExpense({
+        id: editedExpenseId,
+        amount: 100,
+        description: 'New expense edited',
+        date: new Date(),
+      });
+    } else {
+      expenseContext.addExpense({
+        amount: 10,
+        description: 'New expense',
+        date: new Date(),
+      });
+    }
     navigation.goBack();
   }
 
@@ -34,6 +50,7 @@ const ManageExpense: React.FC<ManageExpensecreenProps> = ({
   }
 
   function deleteExpenseHandler() {
+    expenseContext.deleteExpense(editedExpenseId);
     navigation.goBack();
   }
 
