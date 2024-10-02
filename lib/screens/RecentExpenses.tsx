@@ -24,6 +24,7 @@ const RecentExpenses: React.FC<RecentExpensesProps> = ({
     <ExpensesOutput
       expenses={recentExpenses}
       period="Last 7 Days"
+      fallbackText="No expenses to show"
     />
   );
 };

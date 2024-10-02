@@ -14,6 +14,7 @@ const AllExpenses: React.FC<AllExpensesProps> = ({}) => {
     <ExpensesOutput
       expenses={expenses}
       period="Total"
+      fallbackText="No recent expenses"
     />
   );
 };

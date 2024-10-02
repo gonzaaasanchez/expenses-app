@@ -23,13 +23,13 @@ export const DUMMY_EXPENSES: Expense[] = [
   {
     id: 'e4',
     description: 'book',
-    date: new Date('2024-10-01'),
+    date: new Date('2024-07-01'),
     amount: 5,
   },
   {
     id: 'e5',
     description: 'book 2',
-    date: new Date('2024-09-28'),
+    date: new Date('2024-07-28'),
     amount: 7,
   },
 ];
