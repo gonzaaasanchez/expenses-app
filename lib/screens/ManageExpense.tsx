@@ -25,11 +25,17 @@ const ManageExpense: React.FC<ManageExpensecreenProps> = ({
     });
   }, [navigation, isEditing]);
 
-  function confirmHandler() {}
+  function confirmHandler() {
+    navigation.goBack();
+  }
 
-  function cancelHandler() {}
+  function cancelHandler() {
+    navigation.goBack();
+  }
 
-  function deleteExpenseHandler() {}
+  function deleteExpenseHandler() {
+    navigation.goBack();
+  }
 
   return (
     <View style={styles.container}>

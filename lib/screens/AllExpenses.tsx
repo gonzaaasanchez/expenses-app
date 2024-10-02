@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import ExpensesOutput from '../components/ExpensesOutput/ExpensesOutput';
 import Expense from '../model/Expense';
+import { ExpensesContext } from '../store/expenses-context';
 
 interface AllExpensesProps {
   expenses: Expense[];
@@ -7,10 +9,11 @@ interface AllExpensesProps {
 }
 
 const AllExpenses: React.FC<AllExpensesProps> = ({ expenses, period }) => {
+  const expensesContext = useContext(ExpensesContext);
   return (
     <ExpensesOutput
-      expenses={expenses}
-      period='Total'
+      expenses={expensesContext.expenses}
+      period="Total"
     />
   );
 };
