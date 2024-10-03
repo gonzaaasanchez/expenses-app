@@ -57,21 +57,12 @@ const ManageExpense: React.FC<ManageExpensecreenProps> = ({
 
   return (
     <View style={styles.container}>
-      <ExpenseForm />
-      <View style={styles.buttonsContainer}>
-        <Button
-          style={styles.button}
-          chidren={'Cancel'}
-          onPress={cancelHandler}
-          mode={ButtonMode.flat}
-        />
-        <Button
-          style={styles.button}
-          chidren={isEditing ? 'Update' : 'Add'}
-          onPress={confirmHandler}
-          mode={ButtonMode.normal}
-        />
-      </View>
+      <ExpenseForm
+        onCancel={cancelHandler}
+        onSubmit={confirmHandler}
+        submitButtonLabel={isEditing ? 'Update' : 'Add'}
+      />
+
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
@@ -94,15 +85,7 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
   },
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    minWidth: 20,
-    marginHorizontal: 8,
-  },
+
   deleteContainer: {
     marginTop: 16,
     paddingTop: 8,
