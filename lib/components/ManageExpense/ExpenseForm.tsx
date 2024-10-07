@@ -29,6 +29,10 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
       };
     });
   }
+
+  function submitHandler() {
+    
+  }
   return (
     <View style={styles.formStyle}>
       <Text style={styles.title}>Your expense</Text>
@@ -72,7 +76,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
         <Button
           style={styles.button}
           chidren={submitButtonLabel}
-          onPress={onSubmit}
+          onPress={submitHandler}
           mode={ButtonMode.normal}
         />
       </View>
